@@ -200,7 +200,7 @@ class ResourceEvents extends Component {
                         let left = index*cellWidth + (index > 0 ? 2 : 3);
                         let width = (evt.span * cellWidth - (index > 0 ? 5 : 6)) > 0 ? (evt.span * cellWidth - (index > 0 ? 5 : 6)) : 0;
                         //let top = marginTop + idx*config.eventItemLineHeight;
-                        let top = marginTop + config.eventItemLineHeight;
+                        let top = marginTop;
                         let eventItem = <DnDEventItem
                                                    {...this.props}
                                                    key={evt.eventItem.id}
