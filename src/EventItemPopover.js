@@ -82,6 +82,7 @@ class EventItemPopover extends Component {
             );
         }
 
+        const tooltip = React.isValidElement(title) ? '' : title;
         let dateFormat = config.eventItemPopoverDateFormat;
         return (
             <div style={{width: '300px'}}>
@@ -90,7 +91,7 @@ class EventItemPopover extends Component {
                         <div className="status-dot" style={{backgroundColor: statusColor}} />
                     </Col>
                     <Col span={22} className="overflow-text">
-                        <span className="header2-text" title={title}>{title}</span>
+                        <span className="header2-text" title={tooltip}>{title}</span>
                     </Col>
                 </Row>
                 {subtitleRow}

@@ -185,7 +185,8 @@ class ResourceEvents extends Component {
                 let renderEventsMaxIndex = headerItem.addMore === 0 ? cellMaxEvents : headerItem.addMoreIndex;
 
                 headerItem.events.forEach((evt, idx) => {
-                    if(idx < renderEventsMaxIndex && evt !== undefined && evt.render) {
+                    //if(idx < renderEventsMaxIndex && evt !== undefined && evt.render) {
+                    if(evt !== undefined && evt.render) {
                         let durationStart = localeMoment(startDate);
                         let durationEnd = localeMoment(endDate).add(1, 'days');
                         if(cellUnit === CellUnits.Hour){
@@ -198,7 +199,8 @@ class ResourceEvents extends Component {
                         let isEnd = eventEnd <= durationEnd;
                         let left = index*cellWidth + (index > 0 ? 2 : 3);
                         let width = (evt.span * cellWidth - (index > 0 ? 5 : 6)) > 0 ? (evt.span * cellWidth - (index > 0 ? 5 : 6)) : 0;
-                        let top = marginTop + idx*config.eventItemLineHeight;
+                        //let top = marginTop + idx*config.eventItemLineHeight;
+                        let top = marginTop + config.eventItemLineHeight;
                         let eventItem = <DnDEventItem
                                                    {...this.props}
                                                    key={evt.eventItem.id}
@@ -215,7 +217,7 @@ class ResourceEvents extends Component {
                         eventList.push(eventItem);
                     }
                 });
-
+                /*
                 if(headerItem.addMore > 0) {
                     let left = index*cellWidth + (index > 0 ? 2 : 3);
                     let width = cellWidth - (index > 0 ? 5 : 6);
@@ -232,7 +234,7 @@ class ResourceEvents extends Component {
                                         />;
                     eventList.push(addMoreItem);
                 }
-
+                */
                 if(headerItem.summary != undefined) {
                     let top = isTop ? 1 : resourceEvents.rowHeight - config.eventItemLineHeight + 1;
                     let left = index*cellWidth + (index > 0 ? 2 : 3);

@@ -785,9 +785,11 @@ export default class SchedulerData {
                         hasSummary = true;
                 }
             });
-
             resourceEvents.hasSummary = hasSummary;
             let rowsCount = maxRowsCount > this.getCellMaxEvents() ? this.getCellMaxEvents() : maxRowsCount;
+            
+            rowsCount = rowsCount > 0 ? 1 : 0;  // ales | always one row
+            
             resourceEvents.rowHeight = rowsCount === 0 ? this.config.eventItemLineHeight + 2 : rowsCount * this.config.eventItemLineHeight + (this.config.creatable && this.config.checkConflict === false ? 20 : 2);
             if(hasSummary)
                 resourceEvents.rowHeight = resourceEvents.rowHeight + this.config.eventItemLineHeight;
